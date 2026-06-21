@@ -1,7 +1,8 @@
 from telegram import Update
-import gspread
-from google.oauth2.service_account import Credentials
+import os
+import json
 from datetime import datetime
+from google.oauth2.service_account import Credentials
 from telegram.ext import (
     Application,
     MessageHandler,
@@ -12,21 +13,19 @@ from telegram.ext import (
 
 TOKEN = "8006110874:AAFcKtp4jHqASnqCtaPb9tQvKz201EpU7PQ"
 
-scope = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive"
-]
 
-creds = Credentials.from_service_account_file(
-    "financial-log-given.json",
-    scopes=scope
+
+
+scope = [...]
+
+google_creds = json.loads(
+    os.environ["GOOGLE_CREDENTIALS"]
 )
 
-client = gspread.authorize(creds)
-
-spreadsheet = client.open("Financial Log")
-sheet = spreadsheet.sheet1
-
+creds = Credentials.from_service_account_info(
+    google_creds,
+    scopes=scope
+)
 # Tempat menyimpan transaksi sementara
 transaksi = []
 
