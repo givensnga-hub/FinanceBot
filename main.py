@@ -68,7 +68,7 @@ async def balas(update: Update, context: ContextTypes.DEFAULT_TYPE):
         data = pesan.split()
 
         jenis = data[0]
-        kategori = " ".join(data[-1])
+        kategori = " ".join(data[1:-1])
         nominal = int(data[-1])
 
         if jenis == "+":
