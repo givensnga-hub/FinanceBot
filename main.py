@@ -17,7 +17,8 @@ TOKEN = os.getenv("BOT_TOKEN")
 
 
 
-scope = [...]
+scope = ["https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive"]
 
 google_creds = json.loads(
     os.environ["GOOGLE_CREDENTIALS"]
