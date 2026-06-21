@@ -1,5 +1,6 @@
 from telegram import Update
 import os
+import gspread
 import json
 from datetime import datetime
 from google.oauth2.service_account import Credentials
@@ -26,6 +27,11 @@ creds = Credentials.from_service_account_info(
     google_creds,
     scopes=scope
 )
+client = gspread.authorize(creds)
+
+sheet = client.open_by_key(
+    "1du4ZNPoMjaDgGALopQGgNHWDeNGyHi0Bao_ShHa7eaM").worksheet("Transaksi")
+
 # Tempat menyimpan transaksi sementara
 transaksi = []
 
