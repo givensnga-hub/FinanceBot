@@ -11,7 +11,7 @@ from telegram.ext import (
     ContextTypes
 )
 
-TOKEN = "8006110874:AAFcKtp4jHqASnqCtaPb9tQvKz201EpU7PQ"
+TOKEN = os.getenv("BOT_TOKEN")
 
 
 
@@ -117,9 +117,9 @@ async def balas(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception as e:
         print("Error:", e)
 
-        await update.message.reply_text(
-            "Format salah.\n\nContoh:\n+ gaji 5000000\n- makan 25000"
-        )
+    await update.message.reply_text(
+        f"Error: {e}"
+    )
 
 
 async def saldo(update: Update, context: ContextTypes.DEFAULT_TYPE):
